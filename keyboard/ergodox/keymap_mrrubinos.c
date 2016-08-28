@@ -18,7 +18,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |--------+------+------+------+------+------|  [   |           |   ]  |------+------+------+------+------+--------|
    * | LShift |   Z  |   X  |   C  |   V  |   X  |      |           |      |   B  |   M  |   W  |   V  |   Z  | RShift |
    * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-   *   | LCtr | LAlt | LGUI |  ~L1 |  ~L2 |                                       | ~L4 |  ~L3  | RGUI | RAlt | RCtr |
+   *   | LCtr | LAlt | LGUI |  ~L1 |  ~L3 |                                       | ~L4 |  ~L2  | RGUI | RAlt | RCtr |
    *   `----------------------------------'                                       `----------------------------------'
    *                                        ,-------------.       ,-------------.
    *                                        | Home |  End |       | Left | Right|
@@ -36,20 +36,20 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   KEYMAP(  // layer 0 : default
       // left hand
-      ESC,    1,    2,   3,   4,   5,   FN1,
-      BSLS, QUOT, COMM, DOT,   P,   Y,  FN7,
+      ESC,    1,    2,   3,   4,   5,   FN0,
+      BSLS, QUOT, COMM, DOT,   P,   Y,  FN5,
       TAB,   A,    O,   E,   U,   I,
       LSFT, SCLN,   Q,   J,   K,   X,  LBRC,
-      LCTL, LALT, LGUI, FN2, FN3,
+      LCTL, LALT, LGUI, FN1, FN3,
       HOME, END,
       PGUP,
       BSPC, DEL, PGDN,
       // right hand
       CAPS,  6,   7,   8,   9,   0,  EQL,
-      FN8,   F,   G,   C,   R,   L, SLSH,
+      FN6,   F,   G,   C,   R,   L, SLSH,
       D,   H,   T,   N,   S, MINS,
       RBRC,  B,   M,   W,   V,   Z, RSFT,
-      FN5, FN4, RGUI, RALT, RCTL,
+      FN4, FN2, RGUI, RALT, RCTL,
       LEFT, RIGHT,
       UP,
       DOWN, ENT, SPC
@@ -85,11 +85,11 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   KEYMAP(  // layer 1 : media keys and mouse
       // left hand
-      FN0, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+      FN1, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
       TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
       TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
       TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-      TRNS,TRNS,TRNS,FN6,TRNS,
+      TRNS,TRNS,TRNS,FN0,TRNS,
       TRNS,TRNS,
       TRNS,
       TRNS,TRNS,TRNS,
@@ -110,7 +110,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        * ,--------------------------------------------------.           ,--------------------------------------------------.
        * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
        * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-       * |        | <<"  |  ("  |  ->  |  ")  | ">>  |      |           |      |      |  ^   |  $   |      |      |        |
+       * |        | <<"  |  ("  |  ->  |  ")  | ">>  |      |           |      |      |  ^   |  $   |   *  |      |        |
        * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
        * |        |      |      |  :e  |      |      |------|           |------|      |      |      |      |      |        |
        * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -132,19 +132,19 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KEYMAP(  // layer 2 : function and util
       // left hand
       TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-      TRNS, FN7, FN8, FN9,FN10,FN11,TRNS,
+      TRNS, FN8, FN9,FN10,FN11,FN12,TRNS,
       TRNS,TRNS,TRNS, FN2,TRNS,TRNS,
       TRNS,TRNS, FN1,TRNS,TRNS,TRNS,TRNS,
-      TRNS,TRNS,TRNS,TRNS,FN0,
+      TRNS,TRNS,TRNS,TRNS,TRNS,
       TRNS,TRNS,
       TRNS,
       TRNS,TRNS,TRNS,
       // right hand
       TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-      TRNS,TRNS, FN5, FN6,TRNS,TRNS,TRNS,
+      TRNS,TRNS, FN5, FN6,FN7,TRNS,TRNS,
       TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
       TRNS, FN3,TRNS, FN4,TRNS,TRNS,TRNS,
-      TRNS,TRNS,TRNS,TRNS,TRNS,
+      TRNS,FN0,TRNS,TRNS,TRNS,
       TRNS,TRNS,
       TRNS,
       TRNS,TRNS,TRNS
@@ -154,13 +154,13 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        * Keymap: Function and util (Layer 3)
        * 
        * ,--------------------------------------------------.           ,--------------------------------------------------.
-       * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+       * |        |   1  |  2   |  3   |      |      |      |           |      |      |      |      |      |      |        |
        * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-       * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+       * |        |      |      |      |  P   |      |      |           |      |      |      |  C   |      |      |        |
        * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-       * |        |      |      |      |      |      |------|           |------|      |      |      |      |      |        |
+       * |        |      |      |      |      |      |------|           |------|   D  |      |      |  N   |      |        |
        * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-       * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+       * |        |      |  Q   |      |      |      |      |           |      |      |      |      |      |      |        |
        * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
        *   |      |      |      |      |      |                                       |      |      |      |      |      |
        *   `----------------------------------'                                       `----------------------------------'
@@ -177,20 +177,20 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   KEYMAP(  // layer 3 : function and util
       // left hand
-      TRNS, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-      TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+      TRNS, FN3, FN4, FN5,TRNS,TRNS,TRNS,
+      TRNS,TRNS,TRNS,TRNS, FN7,TRNS,TRNS,
       TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-      TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-      TRNS,TRNS,TRNS,TRNS,TRNS,
+      TRNS,TRNS, FN8,TRNS,TRNS,TRNS,TRNS,
+      TRNS,TRNS,TRNS,TRNS, FN0,
       TRNS,TRNS,
       TRNS,
       TRNS,TRNS,TRNS,
       // right hand
       TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+      TRNS,TRNS,TRNS, FN1,TRNS,TRNS,TRNS,
+           FN2, TRNS,TRNS, FN6,TRNS,TRNS,
       TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-      TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-      TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-      TRNS,FN0,TRNS,TRNS,TRNS,
+      TRNS,TRNS,TRNS,TRNS,TRNS,
       TRNS,TRNS,
       TRNS,
       TRNS,TRNS,TRNS
@@ -262,15 +262,27 @@ enum macro_id {
   MAY_ACUTE_U,
   MAY_ACUTE_I,
   MAY_TILDE_N,
-  WRITE,
-  WRITE_QUIT,
-  BUFFERS,
-  EDIT,
+
   PARENTHESIS_QUOTE,
   QUOTE_PARENTHESIS,
   OPEN_BIN,
   CLOSE_BIN,
   ARROW,
+
+  VIM_WRITE,
+  VIM_WRITE_QUIT,
+  VIM_BUFFERS,
+  VIM_EDIT,
+
+  TMUX_CREATE,
+  TMUX_DELETE,
+  TMUX_W1,
+  TMUX_W2,
+  TMUX_W3,
+  TMUX_NEXT,
+  TMUX_PREV,
+  TMUX_SELECT,
+
   PASSWORD1,
 };
 
@@ -290,19 +302,20 @@ enum macro_id {
 #define MACRO_MAY_TILDE_N  MACRO( D(RALT), T(N), U(RALT), D(LSFT), T(N), U(LSFT), END)
 
 //tmux macros
-#define MACRO_CREATE  MACRO( D(RCTL), T(B), U(RCTL), T(C), END)
-#define MACRO_W1      MACRO( D(RCTL), T(B), U(RCTL), T(1), END)
-#define MACRO_W2      MACRO( D(RCTL), T(B), U(RCTL), T(2), END)
-#define MACRO_W3      MACRO( D(RCTL), T(B), U(RCTL), T(3), END)
-#define MACRO_NEXT    MACRO( D(RCTL), T(B), U(RCTL), T(N), END)
-#define MACRO_PREV    MACRO( D(RCTL), T(B), U(RCTL), T(P), END)
-#define MACRO_SELECT  MACRO( D(RCTL), T(B), U(RCTL), T(Q), END)
+#define MACRO_TMUX_CREATE  MACRO( D(RCTL), T(B), U(RCTL), T(C), END)
+#define MACRO_TMUX_DELETE  MACRO( D(RCTL), T(B), U(RCTL), T(D), END)
+#define MACRO_TMUX_W1      MACRO( D(RCTL), T(B), U(RCTL), T(1), END)
+#define MACRO_TMUX_W2      MACRO( D(RCTL), T(B), U(RCTL), T(2), END)
+#define MACRO_TMUX_W3      MACRO( D(RCTL), T(B), U(RCTL), T(3), END)
+#define MACRO_TMUX_NEXT    MACRO( D(RCTL), T(B), U(RCTL), T(N), END)
+#define MACRO_TMUX_PREV    MACRO( D(RCTL), T(B), U(RCTL), T(P), END)
+#define MACRO_TMUX_SELECT  MACRO( D(RCTL), T(B), U(RCTL), T(Q), END)
 
 //VI macros
-#define MACRO_WRITE       MACRO( D(RSFT), T(SCLN), U(RSFT), T(W), T(ENT), END)
-#define MACRO_WRITE_QUIT  MACRO( D(RSFT), T(SCLN), U(RSFT), T(W), T(Q), T(ENT), END)
-#define MACRO_BUFFERS     MACRO( D(RSFT), T(SCLN), U(RSFT), T(B), T(SPC), T(TAB), END)
-#define MACRO_EDIT        MACRO( D(RSFT), T(SCLN), U(RSFT), T(E), T(SPC), T(TAB), END)
+#define MACRO_VIM_WRITE       MACRO( D(RSFT), T(SCLN), U(RSFT), T(W), T(ENT), END)
+#define MACRO_VIM_WRITE_QUIT  MACRO( D(RSFT), T(SCLN), U(RSFT), T(W), T(Q), T(ENT), END)
+#define MACRO_VIM_BUFFERS     MACRO( D(RSFT), T(SCLN), U(RSFT), T(B), T(SPC), T(TAB), END)
+#define MACRO_VIM_EDIT        MACRO( D(RSFT), T(SCLN), U(RSFT), T(E), T(SPC), T(TAB), END)
 
 //Erlang stuff
 #define MACRO_PARENTHESIS_QUOTE  MACRO( D(RSFT), T(9), T(QUOT), U(RSFT), END)
@@ -316,38 +329,50 @@ enum macro_id {
  * Fn action definition
  */
 const uint16_t PROGMEM fn_actions[] = {
-  [0]   =  ACTION_FUNCTION(TEENSY_KEY),                   // FN0  - Teensy key
-  [1]   =  ACTION_LAYER_TOGGLE(0),                        // FN1  - set Layer0
+  [0]   =  ACTION_LAYER_TOGGLE(0),                        // FN1  - set Layer0
 
-  [2]   =  ACTION_LAYER_SET(1, ON_PRESS),                 // FN2 - momentary Layer1, to use with mouse 
-  [3]   =  ACTION_LAYER_SET(2, ON_PRESS),                 // FN3 - momentary Layer2, to use with Numpad keys
-  [4]   =  ACTION_LAYER_SET(3, ON_PRESS),                 // FN4 - momentary Layer3, to use with Numpad keys
-  [5]   =  ACTION_LAYER_SET(4, ON_PRESS),                 // FN5 - momentary Layer4, to use with Numpad keys
-  [6]   =  ACTION_LAYER_SET(0, ON_RELEASE),               // FN6 - Back to layer 0
-  [7]   =  ACTION_MODS_KEY(MOD_RSFT, KC_9),               // FN7  = Shifted 9 // ( in English
-  [8]   =  ACTION_MODS_KEY(MOD_LSFT, KC_0),               // FN8  = Shifted 0 // ) in English
+  [1]   =  ACTION_LAYER_SET(1, ON_PRESS),                 // FN2 - momentary Layer1, to use with mouse 
+  [2]   =  ACTION_LAYER_SET(2, ON_PRESS),                 // FN3 - momentary Layer2, to use with Numpad keys
+  [3]   =  ACTION_LAYER_SET(3, ON_PRESS),                 // FN4 - momentary Layer3, to use with Numpad keys
+  [4]   =  ACTION_LAYER_SET(4, ON_PRESS),                 // FN5 - momentary Layer4, to use with Numpad keys
+  [5]   =  ACTION_MODS_KEY(MOD_RSFT, KC_9),               // FN7  = Shifted 9 // ( in English
+  [6]   =  ACTION_MODS_KEY(MOD_LSFT, KC_0),               // FN8  = Shifted 0 // ) in English
+};
 
-
+const uint16_t PROGMEM fn_actions_1[] = {
+  [0]  =  ACTION_LAYER_SET(0, ON_RELEASE),               // FN0  - Back to layer 0 
+  [1]   =  ACTION_FUNCTION(TEENSY_KEY),                   // FN0  - Teensy key
 };
 
 const uint16_t PROGMEM fn_actions_2[] = {
   [0]  =  ACTION_LAYER_SET(0, ON_RELEASE),               // FN0  - Back to layer 0 
-  [1]  =  ACTION_MACRO(WRITE_QUIT),                      // FN1  = Write and Quit 
-  [2]  =  ACTION_MACRO(EDIT),                            // FN2  = Edit 
-  [3]  =  ACTION_MACRO(BUFFERS),                         // FN3  = Buffers 
-  [4]  =  ACTION_MACRO(WRITE),                           // FN4  = Write 
+
+  [1]  =  ACTION_MACRO(VIM_WRITE_QUIT),                  // FN1  = Write and Quit 
+  [2]  =  ACTION_MACRO(VIM_EDIT),                        // FN2  = Edit 
+  [3]  =  ACTION_MACRO(VIM_BUFFERS),                     // FN3  = Buffers 
+  [4]  =  ACTION_MACRO(VIM_WRITE),                       // FN4  = Write 
   [5]  =  ACTION_MODS_KEY(MOD_LSFT, KC_6),               // FN5  = Caret
   [6]  =  ACTION_MODS_KEY(MOD_LSFT, KC_4),               // FN6  = Dollar
+  [7]  =  ACTION_MODS_KEY(MOD_LSFT, KC_8),               // FN7  = Star
 
-  [7]  =  ACTION_MACRO(OPEN_BIN),                        // FN7  = Erlang open string binary
-  [8]  =  ACTION_MACRO(PARENTHESIS_QUOTE),               // FN8  = Erlang open parenthesis quote
-  [9]  =  ACTION_MACRO(ARROW),                           // FN9  = Erlang arrow
-  [10] =  ACTION_MACRO(QUOTE_PARENTHESIS),               // FN10 = Erlang quote parenthesis
-  [11] =  ACTION_MACRO(CLOSE_BIN),                       // FN11 = Erlang close string binary
+  [8]  =  ACTION_MACRO(OPEN_BIN),                        // FN8  = Erlang open string binary
+  [9]  =  ACTION_MACRO(PARENTHESIS_QUOTE),               // FN9  = Erlang open parenthesis quote
+  [10] =  ACTION_MACRO(ARROW),                           // FN10  = Erlang arrow
+  [11] =  ACTION_MACRO(QUOTE_PARENTHESIS),               // FN11 = Erlang quote parenthesis
+  [12] =  ACTION_MACRO(CLOSE_BIN),                       // FN12 = Erlang close string binary
 };
 
 const uint16_t PROGMEM fn_actions_3[] = {
   [0]  =  ACTION_LAYER_SET(0, ON_RELEASE),               // FN0  - Back to layer 0 
+
+  [1]  =  ACTION_MACRO(TMUX_CREATE),                     // FN1  - Back to layer 0 
+  [2]  =  ACTION_MACRO(TMUX_DELETE),                     // FN2  - Back to layer 0 
+  [3]  =  ACTION_MACRO(TMUX_W1),                         // FN3  - Back to layer 0 
+  [4]  =  ACTION_MACRO(TMUX_W2),                         // FN4  - Back to layer 0 
+  [5]  =  ACTION_MACRO(TMUX_W3),                         // FN5  - Back to layer 0 
+  [6]  =  ACTION_MACRO(TMUX_NEXT),                       // FN6  - Back to layer 0 
+  [7]  =  ACTION_MACRO(TMUX_PREV),                       // FN7  - Back to layer 0 
+  [8]  =  ACTION_MACRO(TMUX_SELECT),                     // FN8  - Back to layer 0 
 };
 
 
@@ -406,10 +431,18 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
       case MAY_ACUTE_I:       return MACRO_MAY_ACUTE_I;
       case MAY_TILDE_N:       return MACRO_MAY_TILDE_N;
 
-      case WRITE_QUIT:        return MACRO_WRITE_QUIT;
-      case EDIT:              return MACRO_EDIT;
-      case BUFFERS:           return MACRO_BUFFERS;
-      case WRITE:             return MACRO_WRITE;
+      case VIM_WRITE_QUIT:    return MACRO_VIM_WRITE_QUIT;
+      case VIM_EDIT:          return MACRO_VIM_EDIT;
+      case VIM_BUFFERS:       return MACRO_VIM_BUFFERS;
+      case VIM_WRITE:         return MACRO_VIM_WRITE;
+
+      case TMUX_CREATE:  return MACRO_TMUX_CREATE;
+      case TMUX_DELETE:  return MACRO_TMUX_DELETE;
+      case TMUX_W1:      return MACRO_TMUX_W1;
+      case TMUX_W2:      return MACRO_TMUX_W2;
+      case TMUX_W3:      return MACRO_TMUX_W3;
+      case TMUX_NEXT:    return MACRO_TMUX_NEXT;
+      case TMUX_PREV:    return MACRO_TMUX_PREV;
 
       case OPEN_BIN:          return MACRO_OPEN_BIN;
       case PARENTHESIS_QUOTE: return MACRO_PARENTHESIS_QUOTE;
@@ -424,7 +457,9 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
 }
 
 #define FN_ACTIONS_SIZE     (sizeof(fn_actions)   / sizeof(fn_actions[0]))
+#define FN_ACTIONS_1_SIZE   (sizeof(fn_actions_1) / sizeof(fn_actions_1[0]))
 #define FN_ACTIONS_2_SIZE   (sizeof(fn_actions_2) / sizeof(fn_actions_2[0]))
+#define FN_ACTIONS_3_SIZE   (sizeof(fn_actions_3) / sizeof(fn_actions_3[0]))
 #define FN_ACTIONS_4_SIZE   (sizeof(fn_actions_4) / sizeof(fn_actions_4[0]))
 
 /*
@@ -438,8 +473,16 @@ action_t keymap_fn_to_action(uint8_t keycode)
     action_t action;
     action.code = ACTION_NO;
 
+    if (layer == 1 && FN_INDEX(keycode) < FN_ACTIONS_1_SIZE) {
+        action.code = pgm_read_word(&fn_actions_1[FN_INDEX(keycode)]);
+    }
+
     if (layer == 2 && FN_INDEX(keycode) < FN_ACTIONS_2_SIZE) {
         action.code = pgm_read_word(&fn_actions_2[FN_INDEX(keycode)]);
+    }
+
+    if (layer == 3 && FN_INDEX(keycode) < FN_ACTIONS_3_SIZE) {
+        action.code = pgm_read_word(&fn_actions_3[FN_INDEX(keycode)]);
     }
 
     if (layer == 4 && FN_INDEX(keycode) < FN_ACTIONS_4_SIZE) {
