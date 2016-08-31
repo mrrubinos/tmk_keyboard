@@ -158,7 +158,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
        * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
        * |        |      |      |      |  P   |      |      |           |      |      |      |  C   |      |      |        |
        * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
-       * |        |      |      |      |      |      |------|           |------|   D  |      |      |  N   |      |        |
+       * |        |  O   |      |      |      |      |------|           |------|   D  |      |      |  N   |      |        |
        * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
        * |        |      |  Q   |      |      |      |      |           |      |      |      |      |      |      |        |
        * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -179,7 +179,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       // left hand
       TRNS, FN3, FN4, FN5,TRNS,TRNS,TRNS,
       TRNS,TRNS,TRNS,TRNS, FN7,TRNS,TRNS,
-      TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+      TRNS,TRNS, FN9,TRNS,TRNS,TRNS,
       TRNS,TRNS, FN8,TRNS,TRNS,TRNS,TRNS,
       TRNS,TRNS,TRNS,TRNS, FN0,
       TRNS,TRNS,
@@ -187,8 +187,8 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       TRNS,TRNS,TRNS,
       // right hand
       TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-      TRNS,TRNS,TRNS, FN1,TRNS,TRNS,TRNS,
-           FN2, TRNS,TRNS, FN6,TRNS,TRNS,
+      TRNS,TRNS,TRNS, FN1,TRNS,TRNS,FN11,
+           FN2, TRNS,TRNS, FN6,TRNS,FN10,
       TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
       TRNS,TRNS,TRNS,TRNS,TRNS,
       TRNS,TRNS,
@@ -282,6 +282,9 @@ enum macro_id {
   TMUX_NEXT,
   TMUX_PREV,
   TMUX_SELECT,
+  TMUX_OTHER,
+  TMUX_HORIZONTAL,
+  TMUX_VERTICAL,
 
   PASSWORD1,
 };
@@ -302,14 +305,17 @@ enum macro_id {
 #define MACRO_MAY_TILDE_N  MACRO( D(RALT), T(N), U(RALT), D(LSFT), T(N), U(LSFT), END)
 
 //tmux macros
-#define MACRO_TMUX_CREATE  MACRO( D(RCTL), T(B), U(RCTL), T(C), END)
-#define MACRO_TMUX_DELETE  MACRO( D(RCTL), T(B), U(RCTL), T(D), END)
-#define MACRO_TMUX_W1      MACRO( D(RCTL), T(B), U(RCTL), T(1), END)
-#define MACRO_TMUX_W2      MACRO( D(RCTL), T(B), U(RCTL), T(2), END)
-#define MACRO_TMUX_W3      MACRO( D(RCTL), T(B), U(RCTL), T(3), END)
-#define MACRO_TMUX_NEXT    MACRO( D(RCTL), T(B), U(RCTL), T(N), END)
-#define MACRO_TMUX_PREV    MACRO( D(RCTL), T(B), U(RCTL), T(P), END)
-#define MACRO_TMUX_SELECT  MACRO( D(RCTL), T(B), U(RCTL), T(Q), END)
+#define MACRO_TMUX_CREATE     MACRO( D(RCTL), T(B), U(RCTL), T(C), END)
+#define MACRO_TMUX_DELETE     MACRO( D(RCTL), T(B), U(RCTL), T(D), END)
+#define MACRO_TMUX_W1         MACRO( D(RCTL), T(B), U(RCTL), T(1), END)
+#define MACRO_TMUX_W2         MACRO( D(RCTL), T(B), U(RCTL), T(2), END)
+#define MACRO_TMUX_W3         MACRO( D(RCTL), T(B), U(RCTL), T(3), END)
+#define MACRO_TMUX_NEXT       MACRO( D(RCTL), T(B), U(RCTL), T(N), END)
+#define MACRO_TMUX_PREV       MACRO( D(RCTL), T(B), U(RCTL), T(P), END)
+#define MACRO_TMUX_SELECT     MACRO( D(RCTL), T(B), U(RCTL), T(Q), END)
+#define MACRO_TMUX_OTHER      MACRO( D(RCTL), T(B), U(RCTL), T(O), END)
+#define MACRO_TMUX_HORIZONTAL MACRO( D(RCTL), T(B), U(RCTL), T(MINS), END)
+#define MACRO_TMUX_VERTICAL   MACRO( D(RCTL), T(B), U(RCTL), T(SLSH), END)
 
 //VI macros
 #define MACRO_VIM_WRITE       MACRO( D(RSFT), T(SCLN), U(RSFT), T(W), T(ENT), END)
@@ -363,16 +369,19 @@ const uint16_t PROGMEM fn_actions_2[] = {
 };
 
 const uint16_t PROGMEM fn_actions_3[] = {
-  [0]  =  ACTION_LAYER_SET(0, ON_RELEASE),               // FN0  - Back to layer 0 
+  [0]  =   ACTION_LAYER_SET(0, ON_RELEASE),               // FN0  - Back to layer 0 
 
-  [1]  =  ACTION_MACRO(TMUX_CREATE),                     // FN1  - Back to layer 0 
-  [2]  =  ACTION_MACRO(TMUX_DELETE),                     // FN2  - Back to layer 0 
-  [3]  =  ACTION_MACRO(TMUX_W1),                         // FN3  - Back to layer 0 
-  [4]  =  ACTION_MACRO(TMUX_W2),                         // FN4  - Back to layer 0 
-  [5]  =  ACTION_MACRO(TMUX_W3),                         // FN5  - Back to layer 0 
-  [6]  =  ACTION_MACRO(TMUX_NEXT),                       // FN6  - Back to layer 0 
-  [7]  =  ACTION_MACRO(TMUX_PREV),                       // FN7  - Back to layer 0 
-  [8]  =  ACTION_MACRO(TMUX_SELECT),                     // FN8  - Back to layer 0 
+  [1]  =   ACTION_MACRO(TMUX_CREATE),                     // FN1  - Back to layer 0 
+  [2]  =   ACTION_MACRO(TMUX_DELETE),                     // FN2  - Back to layer 0 
+  [3]  =   ACTION_MACRO(TMUX_W1),                         // FN3  - Back to layer 0 
+  [4]  =   ACTION_MACRO(TMUX_W2),                         // FN4  - Back to layer 0 
+  [5]  =   ACTION_MACRO(TMUX_W3),                         // FN5  - Back to layer 0 
+  [6]  =   ACTION_MACRO(TMUX_NEXT),                       // FN6  - Back to layer 0 
+  [7]  =   ACTION_MACRO(TMUX_PREV),                       // FN7  - Back to layer 0 
+  [8]  =   ACTION_MACRO(TMUX_SELECT),                     // FN8  - Back to layer 0 
+  [9]  =   ACTION_MACRO(TMUX_OTHER),                      // FN9  - Back to layer 0 
+  [10]  =  ACTION_MACRO(TMUX_HORIZONTAL),                 // FN10  - Back to layer 0 
+  [11]  =  ACTION_MACRO(TMUX_VERTICAL),                   // FN11  - Back to layer 0 
 };
 
 
@@ -436,13 +445,17 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
       case VIM_BUFFERS:       return MACRO_VIM_BUFFERS;
       case VIM_WRITE:         return MACRO_VIM_WRITE;
 
-      case TMUX_CREATE:  return MACRO_TMUX_CREATE;
-      case TMUX_DELETE:  return MACRO_TMUX_DELETE;
-      case TMUX_W1:      return MACRO_TMUX_W1;
-      case TMUX_W2:      return MACRO_TMUX_W2;
-      case TMUX_W3:      return MACRO_TMUX_W3;
-      case TMUX_NEXT:    return MACRO_TMUX_NEXT;
-      case TMUX_PREV:    return MACRO_TMUX_PREV;
+      case TMUX_CREATE:       return MACRO_TMUX_CREATE;
+      case TMUX_DELETE:       return MACRO_TMUX_DELETE;
+      case TMUX_W1:           return MACRO_TMUX_W1;
+      case TMUX_W2:           return MACRO_TMUX_W2;
+      case TMUX_W3:           return MACRO_TMUX_W3;
+      case TMUX_NEXT:         return MACRO_TMUX_NEXT;
+      case TMUX_PREV:         return MACRO_TMUX_PREV;
+      case TMUX_SELECT:       return MACRO_TMUX_SELECT;
+      case TMUX_OTHER:        return MACRO_TMUX_OTHER;
+      case TMUX_HORIZONTAL:   return MACRO_TMUX_HORIZONTAL;
+      case TMUX_VERTICAL:     return MACRO_TMUX_VERTICAL;
 
       case OPEN_BIN:          return MACRO_OPEN_BIN;
       case PARENTHESIS_QUOTE: return MACRO_PARENTHESIS_QUOTE;
